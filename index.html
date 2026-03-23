@@ -3,94 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe</title>
+    <title>Modern Glassmorphism Design</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, rgba(253, 253, 253, 0.1), rgba(240, 240, 240, 0.1));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             height: 100vh;
-            background-color: #f9f9f9;
-        }
-        .board {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-gap: 5px;
-        }
-        .cell {
-            width: 100px;
-            height: 100px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 2em;
-            background-color: #fff;
-            border: 2px solid #333;
-            cursor: pointer;
+            justify-content: center;
+            font-family: Arial, sans-serif;
         }
-        .cell.winner {
-            background-color: lightgreen;
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .glass:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="board" id="board"></div>
-    <script>
-        const board = document.getElementById('board');
-        let currentPlayer = 'X';
-        let boardState = Array(9).fill(null);
-        let gameActive = true;
-        
-        const winningConditions = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-        ];
-
-        function handleCellClick(clickedCell, clickedCellIndex) {
-            if (boardState[clickedCellIndex] !== null || !gameActive) return;
-            boardState[clickedCellIndex] = currentPlayer;
-            clickedCell.innerHTML = currentPlayer;
-            checkWinner();
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        }
-
-        function checkWinner() {
-            let roundWon = false;
-            for (let i = 0; i < winningConditions.length; i++) {
-                const [a, b, c] = winningConditions[i];
-                if (boardState[a] === null) continue;
-                if (boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
-                    roundWon = true;
-                    break;
-                }
-            }
-            if (roundWon) {
-                alert(`Player ${currentPlayer} wins!`);
-                gameActive = false;
-                return;
-            }
-            if (!boardState.includes(null)) {
-                alert('It\u2019s a draw!');
-                gameActive = false;
-            }
-        }
-
-        function createBoard() {
-            for (let i = 0; i < 9; i++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                cell.addEventListener('click', () => handleCellClick(cell, i));
-                board.appendChild(cell);
-            }
-        }
-
-        createBoard();
-    </script>
+    <div class="glass">
+        <h1>Welcome to the Glassmorphism Design!</h1>
+        <p>This design features a liquid glass effect with transparency, blur, and a gradient background.</p>
+    </div>
 </body>
 </html>
